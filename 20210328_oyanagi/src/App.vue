@@ -2,11 +2,12 @@
   <div id="app">
     <router-view />
     <div class="before">
-      <input type="text" v-model="adress" />
+      <input type="text" v-model="address" />
       <button @click="go">住所検索</button>
     </div>
     <div class="after">
-      <p>Adress:{{adress}}</p>
+      <p>Adress:{{getaddress}}</p>
+      <p>Adress:{{address}}</p>
     </div>
   </div>
 </template>
@@ -16,14 +17,16 @@ import axios from "axios";
 export default{
   data(){
     return{
-      adress:""
+      address:""
     };
   },
   methods:{
     go(){
-      axios.get(
-      'https://apis.postcode-jp.com/api/v3/postcodes?apiKey=ilwTgc58g15R4Rz7dBFfFzXZ0XgE6l2iMuhMv6f'
+      axios
+      .get(
+      'https://apis.postcode-jp.com/api/v3/postcodes?q＝${this.address}&apiKey=ilwTgc58g15R4Rz7dBFfFzXZ0XgE6l2iMuhMv6f'
       )
+      .then(response => (this.address = response.getaddress))
     }
   } 
 };
