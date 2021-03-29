@@ -6,7 +6,6 @@
       <button @click="go">住所検索</button>
     </div>
     <div class="after">
-      <p>Adress:{{get}}</p>
       <p>Adress:{{address}}</p>
     </div>
   </div>
@@ -26,10 +25,14 @@ export default{
       .get(
         `https://apis.postcode-jp.com/api/v3/postcodes/${this.address}?apiKey=ilwTgc58g15R4Rz7dBFfFzXZ0XgE6l2iMuhMv6f`
       )
-      .then((response) => console.log(response));
+      .then(response => (this.address=response.data.allAddress));
     },
   } 
-};
+
+
+ }
+  
+
 </script>
 
 
