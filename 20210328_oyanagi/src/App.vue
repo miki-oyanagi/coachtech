@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <p>住所検索</p>
     <router-view />
     <div class="before">
       <input type="text" v-model="address" />
